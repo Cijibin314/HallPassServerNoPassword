@@ -32,6 +32,17 @@ if (seo.url === "glitch-default") {
   seo.url = `https://${process.env.PROJECT_DOMAIN}.glitch.me`;
 }
 
+fastify.listen(
+    { port: process.env.PORT, host: "0.0.0.0" },
+    function (err, address) {
+      if (err) {
+        console.error(err);
+        process.exit(1);
+      }
+      console.log(`Your app is listening on ${address}`);
+    }
+  );  
+
 //end of fastify stuff
 
 const mongoose = require('mongoose');
