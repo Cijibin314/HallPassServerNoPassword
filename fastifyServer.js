@@ -57,31 +57,37 @@ fastify.post('/add-user', (req, res) => {
   const newUser = new UserModel(body);
 
   newUser.save().then((result) => {
-      res.status(200).send(result);
+      //res.status(200).send(result);
+      return result;
   }).catch((error) => {
-      res.status(400).send({ "userExists": false });
+      //res.status(400).send({ "userExists": false });
+      return "error"
   });
 });
 
 fastify.post('/update-user/:username', (req, res) => {
   const username = req.params.username;
   const body = req.body;
-  res.send(body)
+  //res.send(body)
   UserModel.findOneAndUpdate({username: username}, body, {new: true}).exec().then((result)=>{
-    res.status(200);res.send(result)
+    //res.status(200);res.send(result)
+    return result;
   }).catch((error)=>{
-    res.status(400); console.log(error)
+    //res.status(400); console.log(error)
+    return "error"
   });
 })
 
 fastify.post('/replace-user/:username', (req, res) => {
   const username = req.params.username;
   const body = req.body;
-  res.send(body)
+  //res.send(body)
   UserModel.findOneAndReplace({username: username}, body, {new: true}).exec().then((result)=>{
-    res.status(200);res.send(result)
+    //res.status(200);res.send(result)
+    return result;
   }).catch((error)=>{
-    res.status(400); console.log(error)
+    //res.status(400); console.log(error)
+    return "error"
   });
 })
 //puts
@@ -89,23 +95,29 @@ fastify.post('/replace-user/:username', (req, res) => {
 fastify.put('/delete-user/:username', (req, res) => {
   const username = req.params.username;
   UserModel.findOneAndDelete({username:username}).exec().then((result)=>{
-    res.status(200);res.send(result)
+    //res.status(200);res.send(result)
+    return result;
   }).catch((error)=>{
-    res.status(400); console.log(error)
+    //res.status(400); console.log(error)
+    return "error"
   });
 })
 //gets
 fastify.get('/get-user/:username',(req,res)=>{
     const username = req.params.username
     UserModel.findOne({username: username}).exec().then((result)=>{
-      res.status(200);res.send(result)
-    }).catch(err=>res.send(err));
+      //res.status(200);res.send(result)
+      return result;
+    }).catch(err=>{
+        return err
+    });
 })
 
 //testing
 fastify.post('/', (req, res) => {
   const body = req.body;
-  res.send(body);
+  //res.send(body);
+  return body;
 })
 fastify.get('/', (req, res) => {
   return {"this worked":true}
