@@ -12,8 +12,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fastify/formbody": "^7.4.0",
+    "@fastify/static": "^7.0.3",
+    "@fastify/view": "^9.0.0",
     "express": "^4.19.2",
     "fastify": "^4.26.2",
+    "handlebars": "^4.7.8",
     "mongoose": "^8.3.1",
     "path": "^0.12.7"
   },
