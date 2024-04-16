@@ -1,18 +1,17 @@
 const express = require('express')
 const mongoose = require('mongoose');
 const UserModel = require('./userModel');
-const cors = require('cors');
+//const cors = require('cors');
 
 const app = express();
 
 //middleware
 app.use(express.json())
-app.use(cors)
+//app.use(cors)
 
 const connectionString = "mongodb+srv://coltonflather:Wonderful1!@userdatacluster.gskuflb.mongodb.net/"
 mongoose.connect(connectionString);
 const port = process.env.PORT || 3000;
-app.listen(port, ()=>{console.log("server is running on port " + port)});
 
 //post requests
 app.post('/add-user', (req, res) => {
@@ -73,3 +72,11 @@ app.post('/test', (req, res) => {
 app.get('/test', (req, res) => {
   res.status(200).send("this worked");
 })
+
+// monitoring
+app.get('/monitor', (req,res)=>{res.status(200).send("success")})
+app.head('/monitor', (req,res)=>{res.status(200).send("success")})
+
+
+//start server
+app.listen(3000, ()=>{console.log("server is running on port " + port)});
