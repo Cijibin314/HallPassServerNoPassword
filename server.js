@@ -1,10 +1,13 @@
 const express = require('express')
 const mongoose = require('mongoose');
 const UserModel = require('./userModel');
+const cors = require('cors');
 
 const app = express();
 
+//middleware
 app.use(express.json())
+app.use(cors)
 
 const connectionString = "mongodb+srv://coltonflather:Wonderful1!@userdatacluster.gskuflb.mongodb.net/"
 mongoose.connect(connectionString);
