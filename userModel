@@ -7,5 +7,5 @@ const blogSchema = new Schema({
   roomLeft: String,
   location: Object
 });
- 
+  
 module.exports = model('UserData', blogSchema)
