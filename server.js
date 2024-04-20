@@ -4,15 +4,15 @@ const UserModel = require('./userModel');
 const cors = require('cors');
 
 const app = express();
-
+ 
 //middleware
 app.use(express.json())
 app.use(cors())
-
+//myChange
 const connectionString = "mongodb+srv://coltonflather:Wonderful1!@userdatacluster.gskuflb.mongodb.net/"
 mongoose.connect(connectionString);
 const port = process.env.PORT || 3000;
-
+ 
 //post requests
 app.post('/add-user', (req, res) => {
   let body = req.body;
