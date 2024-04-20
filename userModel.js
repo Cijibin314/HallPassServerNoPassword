@@ -3,7 +3,6 @@ const { Schema, model } = mongoose;
 
 const blogSchema = new Schema({
   username: String,
-  password: String,
   roomLeft: String,
   location: Object
 });
